@@ -1,0 +1,11 @@
+!Transparancy
+urxvt*transparent: true
+urxvt*shading: 30
+urxvt*blurRadius: 5
+
+!disable scroll bar 
+urxvt*scrollBar: false
+
+urxvt.font: xft: DejaVu Sans Mono:size=7:antialias=true
+URxvt.perl-ext-common: ...,tabbed,...
+URxvt.keysym.Control-l: command:\033c
