@@ -19,7 +19,10 @@ echo '      `.:::/+oo/+.`ss.        ./do::+/::-----.-/` '
 echo '          ```    -::o/:`       .s+o:-.`````-:+/-` '
 echo '  ~welcome!~        .::///.` `:y:`+. `.....`      '
 echo '                       ...-...` ...`              '
-
+curl "wttr.in/Rochester?format="%l:+%c+%t+%m""
+echo -n 'desktop '
+xdotool get_desktop
+exec fish
 alias ei3="vim ~/.config/i3/config"
 alias glados="ssh bec8616@glados.cs.rit.edu"
 alias queeg="ssh bec8616@queeg.cs.rit.edu"
@@ -33,10 +36,12 @@ alias updot="cp -rf ~/.bashrc ~/Documents/repos/dotfiles;
 alias cat="ccat"
 export EDITOR='vi'
 export VISUAL='vi'
+#alias bleh x
+export LC_ALL="en_US.UTF-8"
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#alias ls='ls --color=auto'
-#force_color_prompt=yes
 #PS1='\[\e[1;91m\][\u@\h \w]\$\[\e[0m\]'
