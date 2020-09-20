@@ -1,0 +1,197 @@
+[colors]
+background = #232e3b
+foreground = #ffffff
+primary = #ffffff
+red = #fbb8b5
+green = #86e2b6
+yellow = #f2faa4
+blue = #afd0ff
+magenta = #dbafff
+cyan = #77ffee
+
+[bar/default]
+width = 100%
+height = 30
+radius = 4
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = "artwiz gelly:style=Regular"
+font-1 = "Noto Sans CJK TC Medium:style=Medium,Regular:size=10"
+font-2 = "Symbola:style=Regular:size=10"
+
+line-size = 3
+line-color = #f00
+
+border-size = 5
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
+
+modules-left = i3 pulseaudio
+modules-center = spotify
+modules-right = wlan cpu battery date
+
+tray-position = right
+tray-padding = 2
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix-foreground = ${colors.foreground}
+format-prefix-underline = ${colors.foreground}
+
+label-layout = %layout%
+label-layout-underline = ${colors.foreground}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.background}
+label-indicator-underline = ${colors.foreground}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+ws-icon-0 = "0;how"
+ws-icon-1 = "1;一"
+ws-icon-2 = "2;二"
+ws-icon-3 = "3;三"
+ws-icon-4 = "4;四"
+ws-icon-5 = "5;五"
+ws-icon-6 = "6;六"
+ws-icon-7 = "7;七"
+ws-icon-8 = "8;八"
+ws-icon-9 = "9;九"
+ws-icon-10 = "10;十"
+
+; focused = Active workspace on focused monitor
+label-focused = %icon%
+label-focused-underline = ${colors.foreground}
+label-focused-foreground = ${colors.red}
+label-focused-background= ${colors.background}
+label-focused-padding = 1
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %icon%
+label-unfocused-padding = 1
+
+; urgent = Workspace with urgency hint set
+label-urgent = %icon%
+label-urgent-foreground = ${colors.magenta}
+label-urgent-padding = 1
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = ""
+format = <label>
+exec = python /usr/local/bin/spotify_status.py -t 40 -f '{song} - {artist}'
+format-underline = ${colors.green}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.yellow}
+label = %percentage:2%%
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = ${colors.magenta}
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground}
+
+ramp-signal-0 = ▱▱▱▱▱
+ramp-signal-1 = ▰▰▱▱▱
+ramp-signal-2 = ▰▰▰▱▱ 
+ramp-signal-3 = ▰▰▰▰▱
+ramp-signal-4 = ▰▰▰▰▰
+ramp-signal-foreground = ${colors.foreground}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%m-%d-%Y | "
+date-alt = " %Y-%m-%d"
+
+time = %I:%M %p
+
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.blue}
+
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${colors.foreground}
+
+label-muted = × muted
+label-muted-foreground = ${colors.foreground}
+
+bar-volume-width = 8
+bar-volume-foreground-0 = ${colors.red}
+bar-volume-foreground-1 = ${colors.yellow}
+bar-volume-foreground-2 = ${colors.green}
+bar-volume-foreground-3 = ${colors.blue}
+bar-volume-foreground-4 = ${colors.cyan}
+bar-volume-foreground-5 = ${colors.magenta}
+bar-volume-foreground-6 = ${colors.foreground}
+bar-volume-gradient = true
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+label-charging = CHR %percentage%%
+format-charging = <label-charging>
+format-charging-underline = ${colors.green}
+
+label-discharging =  BATT %percentage%%
+format-discharging = <label-discharging>
+format-discharging-underline = ${colors.green}
+
+format-full-prefix = "FULL "
+format-full-prefix-foreground = ${colors.foreground}
+format-full-underline = ${self.format-charging-underline}
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+

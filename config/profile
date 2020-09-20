@@ -1,0 +1,46 @@
+#
+# ~/.profile
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# greeter
+echo ''
+echo '   ✧･ﾟ: *✧ﾟ:*｡･:*:･ﾟ*:･ﾟ✧*:･ﾟ✧' 
+echo '   :*✧   🌸 ~welcome~ 🌸   ✧*:'    
+echo '   ✧･ﾟ: *✧ﾟ:*｡･:*:･ﾟ*:･ﾟ✧*:･ﾟ✧'
+echo ''
+
+# media controls
+alias next="playerctl next"
+alias prev="playerctl previous"
+alias pause="playerctl pause"
+alias play="playerctl play"
+alias song="playerctl metadata --format \"{{title}} - {{artist}}\""
+
+# lock screen
+alias lock="lock_and_blur.sh"
+
+# colorized cat by default
+alias cat="ccat"
+
+# easy system check
+alias status="systemctl --state='failed'"
+
+# shorter commands makes for easy typing
+alias pac="s pacman"
+alias rb="reboot"
+alias s="sudo"
+alias t="todo.sh"
+alias g="git"
+
+export EDITOR='vim'
+export VISUAL='vim'
+export LC_ALL="en_US.UTF-8"
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export PATH=$PATH:$HOME/dotnet
+export PATH=$PATH:$HOME/datagrip
+export DOTNET_ROOT=$HOME/dotnet
+
